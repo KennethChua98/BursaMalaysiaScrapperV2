@@ -17,7 +17,6 @@ def getStockList():
     )
 
     code, name = [], []
-    driver.implicitly_wait(100)
 
     select = Select(driver.find_element(By.NAME, "DataTables_Table_0_length"))
     select.select_by_index(3)  # select all companies
@@ -39,7 +38,24 @@ def getStockList():
 
     # use panda to combine the code and name and write to csv
     df = pd.DataFrame({"code": code, "name": name})
+
+    # remove duplicate code and name if any
+    df.drop_duplicates(subset="code", keep=False, inplace=True)
+
+    # remove row if there is any null value
+    df.dropna(inplace=True)
+
+    # Unique case: add a new row to the dataframe for KLCC Property Holdings Berhad & KLCC Real Estate Investment Trust
+    df = df.append(
+        {
+            "code": "5235SS",
+            "name": "KLCC__PROPERTY__HOLDINGS__BERHAD & KLCC__REAL__ESTATE__INVESTMENT__TRUST",
+        },
+        ignore_index=True,
+    )
+
     df.to_csv("code.csv", index=False)
+
     driver.quit()
 
 
@@ -67,9 +83,12 @@ def getFinancialData():
     # read the csv file
     df = pd.read_csv("code.csv")
     stock_code = df["code"].tolist()
+
     for i in tqdm(stock_code):
         try:
-            driver.get(f"https://klse.i3investor.com/web/stock/financial-quarter/{i}")
+            driver.get(
+                f"https://klse.i3investor.com/web/stock/financial-quarter/{i.format('04d')}"
+            )
 
             table = driver.find_element(By.ID, "dttable-fin-quarter")
             rows = table.find_element(By.TAG_NAME, "tbody").find_elements(

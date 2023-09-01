@@ -1,16 +1,12 @@
-# Stock Market Fundamental Analysis (SMFA)
-This project is a python implementation of a stock investment book by the author Ho Kok Mun. This book teaches the method used in selecting stocks for long term investments, such as determining the ROI of the stocks, EPS growth rate, and etc.
+#Bursa Malaysia Main Market Financial Data Web Scraper
 
-Currently, this project only includes 800 listed companies found in the Main Market of the Kuala Lumpur Stock Exchange (KLSE). This excludes commodities, indices, mutual funds, and exchange traded funds. 
+This web scraper allows you to obtain financial data for all 800 listed companies on the Bursa Malaysia main market. The data is gathered from a specific website, providing valuable insights into the financial performance of these companies.
 
-## Requirements
-1. Python 3.6.6
-2. Selenium 3.14.0
-3. Selenium web driver which can be downloaded from [here](https://www.seleniumhq.org/projects/webdriver/)
+##Forked From
+This project is a fork of kj-lai/SMFA, which served as the original source. We've adapted the scraper to better suit our needs and objectives.
 
-## Future Work
-1. Work on NASDAQ and NYSE stock exchanges.
-2. Possibly include some indices (e.g. S&P 500, Dow Jones Industrial Average) and ETFs as well.
+##Contributing
+We welcome contributions to enhance and improve this project. Feel free to fork the repository, make changes, and submit pull requests.
 
-## References
-[1] K. M. Ho, "How to make money from your stock investment even in a falling market", 3rd ed., Malaysia, Kanyin Publications Sdn. Bhd., 2017.
+##Acknowledgments
+We'd like to express our gratitude to the original author of kj-lai/SMFA for providing the foundation for this project.
