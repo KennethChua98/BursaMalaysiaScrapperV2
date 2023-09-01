@@ -1,4 +1,4 @@
-# Bursa Malaysia Main Market Financial Data Web Scraper
+# Bursa Malaysia Financial Data Web Scraper
 
 This web scraper allows you to obtain financial data for all 800 listed companies on the Bursa Malaysia main market. The data is gathered from a specific website, providing valuable insights into the financial performance of these companies.
 
