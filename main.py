@@ -44,17 +44,15 @@ def getStockList():
 
     # remove row if there is any null value
     df.dropna(inplace=True)
+    
+    #remove abnormal rows
+    df = df[df["code"] != "KLCC__PROPERTY__HOLDINGS__BERHAD__stapled__5235SS"]
+    df = df[df["code"] != "KLCC__REAL__ESTATE__INVESTMENT__TRUST__stapled__5235SS"]
 
     # Unique case: add a new row to the dataframe for KLCC Property Holdings Berhad & KLCC Real Estate Investment Trust
-    df = df.append(
-        {
-            "code": "5235SS",
-            "name": "KLCC__PROPERTY__HOLDINGS__BERHAD & KLCC__REAL__ESTATE__INVESTMENT__TRUST",
-        },
-        ignore_index=True,
-    )
+    df.loc[len(df.index)] = ["5235SS", "KLCC PROPERTY HOLDINGS BERHAD & KLCC REAL ESTATE INVESTMENT TRUST"]
 
-    df.to_csv("code.csv", index=False)
+    df.to_csv("stock_list.csv", index=False)
 
     driver.quit()
 
@@ -81,7 +79,7 @@ def getFinancialData():
 
     result = []
     # read the csv file
-    df = pd.read_csv("code.csv")
+    df = pd.read_csv("stock_list.csv")
     stock_code = df["code"].tolist()
 
     for i in tqdm(stock_code):
@@ -117,7 +115,7 @@ def getFinancialData():
 
 
 try:
-    pd.read_csv("code.csv")
+    pd.read_csv("stock_list.csv")
 except:
     getStockList()
 
