@@ -7,7 +7,7 @@ from selenium.webdriver.support.ui import Select
 import pandas as pd
 from tqdm import tqdm
 import time
-from user_agent import options
+from chrome_options import options
 
 
 def getStockList():
