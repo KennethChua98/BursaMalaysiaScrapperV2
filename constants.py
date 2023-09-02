@@ -1,0 +1,17 @@
+columns = [
+    "Stock Code",
+    "Financial Year",
+    "Announcement Date",
+    "Quarter",
+    "Revenue ('000)",
+    "PBT ('000)",
+    "NP ('000)",
+    "NP to SH ('000)",
+    "NP Margin",
+    "ROE",
+    "EPS",
+    "DPS",
+    "NAPS",
+    "QoQ",
+    "YoY",
+]

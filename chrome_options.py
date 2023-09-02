@@ -8,6 +8,7 @@ options = webdriver.ChromeOptions()
 # therefore suppress the error message
 options.add_experimental_option("excludeSwitches", ["enable-logging"])
 options.headless = True
+options.page_load_strategy = 'eager'
 options.add_argument("--disable-gpu")  # Disable GPU acceleration (optional)
 options.add_argument("--blink-settings=imagesEnabled=false")  # Disable image loading
 options.add_argument(f"user-agent={ua.random}")
